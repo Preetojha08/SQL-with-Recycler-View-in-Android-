@@ -52,7 +52,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.tv_D_e_n.setText(arrayList.get(position).getE_N());
         holder.tv_D_e_d.setText(arrayList.get(position).getE_D());
-        Random rnd = new Random();
 
         switch (a)
         {
