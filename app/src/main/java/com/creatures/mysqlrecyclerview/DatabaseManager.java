@@ -54,7 +54,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public Cursor readalldata()
     {
         SQLiteDatabase database = this.getWritableDatabase();
-        String select_query = "select * from events_details order by e_id desc";
+        String select_query = "select * from events_details ";
         Cursor cursor = database.rawQuery(select_query,null);
         return cursor;
 

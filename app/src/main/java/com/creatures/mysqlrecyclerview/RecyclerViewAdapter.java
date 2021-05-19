@@ -1,6 +1,7 @@
 package com.creatures.mysqlrecyclerview;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     ArrayList<model_new> arrayList;
     OnItemClickListener mListener;
     boolean flag=false;
-    int a=1;
+    int a=0;
 
     //Onclick Interface
     public interface OnItemClickListener {
@@ -53,39 +54,44 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.tv_D_e_n.setText(arrayList.get(position).getE_N());
         holder.tv_D_e_d.setText(arrayList.get(position).getE_D());
 
-        switch (a)
+        Log.e("hello","Hey "+position);
+        switch (position)
         {
-            case 1:
+            case 0:
                 holder.cardView.setBackgroundResource(R.drawable.new_event_1);
                 a=2;
                 break;
 
-            case 2:
+            case 1:
                 holder.cardView.setBackgroundResource(R.drawable.new_event_2);
                 a=3;
                 break;
 
-            case 3:
+            case 2:
                 holder.cardView.setBackgroundResource(R.drawable.new_event_3);
                 a=4;
                 break;
 
-            case 4:
+            case 3:
                 holder.cardView.setBackgroundResource(R.drawable.new_event_4);
                 a=5;
                 break;
 
-            case 5:
+            case 4:
                 holder.cardView.setBackgroundResource(R.drawable.new_event_5);
                 a=6;
                 break;
 
-            case 6:
+            case 5:
                 holder.cardView.setBackgroundResource(R.drawable.new_event_6);
                 a=1;
                 break;
-        }
 
+            case 6:
+                holder.cardView.setBackgroundResource(R.drawable.new_event_4);
+                a=2;
+                break;
+        }
 
     }
 
@@ -116,11 +122,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     if (!flag) {
                         imageView_notification.setBackgroundResource(R.drawable.ic_on_notifications_active);
                         flag=true;
+                        pos++;
                         Toast.makeText(v.getContext(), "Notifications is ON for that Event "+pos, Toast.LENGTH_SHORT).show();
                     }
                     else {
                         imageView_notification.setBackgroundResource(R.drawable.ic_off_notifications);
                         flag=false;
+                        pos++;
                         Toast.makeText(v.getContext(), "Notifications is OFF for that Event "+pos, Toast.LENGTH_SHORT).show();
                     }
                 }
