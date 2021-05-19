@@ -1,5 +1,6 @@
 package com.creatures.mysqlrecyclerview;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.recycler_view_holder> {
@@ -48,6 +52,41 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.tv_D_e_n.setText(arrayList.get(position).getE_N());
         holder.tv_D_e_d.setText(arrayList.get(position).getE_D());
+        Random rnd = new Random();
+
+        switch (a)
+        {
+            case 1:
+                holder.cardView.setBackgroundResource(R.drawable.new_event_1);
+                a=2;
+                break;
+
+            case 2:
+                holder.cardView.setBackgroundResource(R.drawable.new_event_2);
+                a=3;
+                break;
+
+            case 3:
+                holder.cardView.setBackgroundResource(R.drawable.new_event_3);
+                a=4;
+                break;
+
+            case 4:
+                holder.cardView.setBackgroundResource(R.drawable.new_event_4);
+                a=5;
+                break;
+
+            case 5:
+                holder.cardView.setBackgroundResource(R.drawable.new_event_5);
+                a=6;
+                break;
+
+            case 6:
+                holder.cardView.setBackgroundResource(R.drawable.new_event_6);
+                a=1;
+                break;
+        }
+
 
     }
 
@@ -61,11 +100,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     class recycler_view_holder extends RecyclerView.ViewHolder
     {
         TextView tv_D_e_n,tv_D_e_d;
+        ConstraintLayout cardView;
+        ImageView imageView_notification;
+
         public recycler_view_holder(@NonNull View itemView) {
             super(itemView);
             tv_D_e_d = (TextView)itemView.findViewById(R.id.recycler_view_event_description_display);
             tv_D_e_n= (TextView)itemView.findViewById(R.id.recycler_view_event_name_display);
-            ImageView imageView_notification;
+            cardView=(ConstraintLayout)itemView.findViewById(R.id.card_view);
 
             imageView_notification=(ImageView)itemView.findViewById(R.id.notification_image_view);
             imageView_notification.setOnClickListener(new View.OnClickListener() {
